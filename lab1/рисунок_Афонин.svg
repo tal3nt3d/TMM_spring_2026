@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="85mm"
+   height="55mm"
+   viewBox="0 0 85 55"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="рисунок_Афонин.svg"
+   inkscape:export-filename="рисунок.jpg"
+   inkscape:export-xdpi="472.90182"
+   inkscape:export-ydpi="472.90182"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="123.39013"
+     inkscape:cy="97.050403"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer3"
+     showgrid="false" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient6"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#24247f;stop-opacity:1;"
+         offset="0"
+         id="stop6" />
+      <stop
+         style="stop-color:#0cb618;stop-opacity:1;"
+         offset="1"
+         id="stop5" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#0cb618;stop-opacity:1;"
+         offset="0"
+         id="stop3" />
+      <stop
+         style="stop-color:#24247f;stop-opacity:1;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#0cb618;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#f8ff07;stop-opacity:1;"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient10"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#0cb618;stop-opacity:1;"
+         offset="0.45556787"
+         id="stop9" />
+      <stop
+         style="stop-color:#24247f;stop-opacity:1;"
+         offset="0.83452749"
+         id="stop10" />
+    </linearGradient>
+    <linearGradient
+       id="swatch153"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop153" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient149"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#00ffd0;stop-opacity:1;"
+         offset="0"
+         id="stop150" />
+      <stop
+         style="stop-color:#006dff;stop-opacity:1;"
+         offset="1"
+         id="stop149" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient145"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#00e1f7;stop-opacity:1;"
+         offset="0"
+         id="stop146" />
+      <stop
+         style="stop-color:#0048fc;stop-opacity:1;"
+         offset="1"
+         id="stop147" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient107"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#408244;stop-opacity:1;"
+         offset="0"
+         id="stop106" />
+      <stop
+         style="stop-color:#24247f;stop-opacity:1;"
+         offset="0"
+         id="stop107" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="-6.0347903 : 46.696384 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="48.561361 : 48.937878 : 1"
+       inkscape:persp3d-origin="22.728877 : 17.87354 : 1"
+       id="perspective94" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="-1.9227167 : 25.531674 : 1"
+       inkscape:vp_y="0 : 657.93046 : 0"
+       inkscape:vp_z="59.098433 : 25.531674 : 1"
+       inkscape:persp3d-origin="28.587858 : 19.500645 : 1"
+       id="perspective39" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient145"
+       id="linearGradient147"
+       x1="85.694031"
+       y1="55.807446"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient149"
+       id="linearGradient150"
+       x1="-0.57474196"
+       y1="27.7313"
+       x2="86.268772"
+       y2="27.7313"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0.56763845,0.65741038)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient107"
+       id="radialGradient16"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.94738196,-0.09610845,4.9493049)"
+       cx="16.462242"
+       cy="22.950237"
+       fx="16.462242"
+       fy="22.950237"
+       r="11.505934" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient107"
+       id="radialGradient17"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.94738196,-0.09610845,4.9493049)"
+       cx="16.462242"
+       cy="22.950237"
+       fx="16.462242"
+       fy="22.950237"
+       r="11.505934" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient107"
+       id="radialGradient18"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.94738196,-0.09610845,4.9493049)"
+       cx="16.462242"
+       cy="22.950237"
+       fx="16.462242"
+       fy="22.950237"
+       r="11.505934" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10"
+       id="radialGradient12"
+       cx="16.462679"
+       cy="14.43642"
+       fx="16.462679"
+       fy="14.43642"
+       r="11.505826"
+       gradientTransform="matrix(1,0,0,0.3638484,-0.09610845,14.070329)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="radialGradient4"
+       cx="14.972101"
+       cy="10.426577"
+       fx="14.972101"
+       fy="10.426577"
+       r="6.5154481"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1007592,-1.1517599,1.037117,0.99119272,-11.082379,23.430705)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2"
+       id="linearGradient3"
+       x1="14.83837"
+       y1="27.827813"
+       x2="27.62207"
+       y2="27.827813"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6"
+       id="linearGradient7"
+       x1="5.1102009"
+       y1="27.714935"
+       x2="15.33837"
+       y2="27.714935"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Фон"
+     style="display:inline;opacity:1;mix-blend-mode:normal;fill:url(#linearGradient147);fill-opacity:1;stroke:#000000;stroke-opacity:1">
+    <rect
+       style="opacity:1;mix-blend-mode:normal;fill:url(#linearGradient150);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+       id="rect149"
+       width="85"
+       height="55"
+       x="-0.0071035083"
+       y="0.025194239"
+       inkscape:label="rect149" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Подпись"
+     style="display:inline;fill:#000000;fill-opacity:0;stroke:#000000;stroke-opacity:1">
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-opacity:1"
+       d="m 52.071287,37.004809 c 5.612659,-2.198293 0,7.81095 2.712786,8.372216 2.712786,0.561266 4.817533,-7.670633 5.238483,-8.559305 0.420949,-0.888672 -0.841899,8.652851 0,9.120571 0.841899,0.467722 3.905475,-1.964431 5.752975,-8.769781 1.847501,-6.805348 0.561266,9.447979 0.561266,9.447979 0,0 0.654812,-7.132756 -1.917657,-7.273073 -2.57247,-0.140316 -1.917661,2.151521 -1.917661,2.151521 0,0 1.847501,1.449937 2.923263,0.865285 1.075758,-0.584652 4.34981,-1.847501 4.34981,-1.847501 0,0 1.520095,-0.561266 1.145919,0.35079 -0.374179,0.912059 -2.38538,2.198293 -0.795129,1.730571 1.590255,-0.467722 5.542502,-1.941044 5.542502,-1.941044"
+       id="path150"
+       inkscape:label="path150" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Герб"
+     transform="rotate(-0.03926325,16886.561,-1884.7836)"
+     style="display:inline">
+    <path
+       d="m 27.37207,18.563161 -11.677142,-2.27173 v 5.528464 l 11.677142,5.22954 z"
+       style="fill:url(#radialGradient16);fill-opacity:0;fill-rule:evenodd;stroke:#0015e7;stroke-width:0.5;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path10" />
+    <path
+       d="M 15.08837,37.092481 5.3602009,25.609382 15.694928,21.819895 27.37207,27.049435 Z"
+       style="fill:url(#radialGradient17);fill-opacity:0;fill-rule:evenodd;stroke:#0015e7;stroke-width:0.5;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path11" />
+    <path
+       d="m 5.3602009,18.337415 v 7.271967 L 15.694928,21.819895 v -5.528464 z"
+       style="fill:url(#radialGradient18);fill-opacity:0;fill-rule:evenodd;stroke:#0015e7;stroke-width:0.5;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path12" />
+    <path
+       d="M 15.08837,23.66419 5.3602009,18.337415 15.694928,16.291431 27.37207,18.563161 Z"
+       style="fill:url(#radialGradient12);fill-opacity:1;fill-rule:evenodd;stroke:#0015e7;stroke-width:0.5;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path13" />
+    <path
+       d="M 15.08837,23.66419 5.3602009,18.337415 v 7.271967 L 15.08837,37.092481 Z"
+       style="fill:url(#linearGradient7);fill-opacity:1;fill-rule:evenodd;stroke:#0015e7;stroke-width:0.5;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path14" />
+    <path
+       d="M 15.08837,23.66419 V 37.092481 L 27.37207,27.049435 V 18.563161 Z"
+       style="fill:url(#linearGradient3);fill-opacity:1;fill-rule:evenodd;stroke:#0015e7;stroke-width:0.5;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path16" />
+    <circle
+       style="fill:url(#radialGradient4);fill-rule:nonzero;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+       id="path1"
+       cx="16.211882"
+       cy="8.8505497"
+       r="6.5154481"
+       transform="rotate(0.03926325)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Девиз"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;fill:#000000;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+       id="text2"
+       transform="matrix(0.90225618,-0.21872232,0.21781952,0.9059958,17.640578,-1.276262)"><textPath
+         xlink:href="#path15"
+         id="textPath15"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;font-family:'Segoe Script';-inkscape-font-specification:'Segoe Script, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke:none;stroke-width:0.264583;stroke-opacity:1"
+           id="tspan3">Будь собой - оригинал лучше подделки</tspan></textPath></text>
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:none;stroke-width:0.255651;stroke-opacity:1"
+       d="m 7.7590161,45.462089 c 0,0 21.3027469,-28.047408 61.4399159,-11.149994"
+       id="path15" />
+    <path
+       sodipodi:type="spiral"
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.770411;stroke-dasharray:none"
+       id="path3"
+       sodipodi:cx="161.83907"
+       sodipodi:cy="98.994949"
+       sodipodi:expansion="1"
+       sodipodi:revolution="0.22742678"
+       sodipodi:radius="15.422437"
+       sodipodi:argument="-0.42709529"
+       sodipodi:t0="0"
+       d="m 161.83907,98.994949 c 7.78822,-3.544499 10.4244,7.864171 8.3085,12.993091"
+       transform="matrix(0.22059254,0,0,0.17646212,5.2088082,7.0412568)" />
+    <path
+       sodipodi:type="spiral"
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.02047;stroke-dasharray:none"
+       id="path2"
+       sodipodi:cx="130.99153"
+       sodipodi:cy="142.83557"
+       sodipodi:expansion="1"
+       sodipodi:revolution="0.22742678"
+       sodipodi:radius="7.0248475"
+       sodipodi:argument="-18.689583"
+       sodipodi:t0="0"
+       d="m 130.99153,142.83557 c 3.84785,0.62086 1.96906,5.61251 -0.12743,7.02369"
+       transform="matrix(0.26355329,0,0,0.24920042,0.11273791,2.2915563)" />
+    <path
+       sodipodi:type="spiral"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.165;stroke-dasharray:none"
+       id="path6"
+       sodipodi:cx="82.301949"
+       sodipodi:cy="13.626041"
+       sodipodi:expansion="1"
+       sodipodi:revolution="0.22742678"
+       sodipodi:radius="3.2717543"
+       sodipodi:argument="0.27872524"
+       sodipodi:t0="0.21910012"
+       d="m 82.896878,14.025943 c 0.80763,1.007832 -0.08812,2.352553 -1.041414,2.841244"
+       transform="matrix(1.0031956,0,0,0.99496351,-0.23280029,-2.941129)" />
+  </g>
+  <g
+     inkscape:label="ФИО"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;fill:#000000;stroke-width:0.264583"
+       x="2.5443182"
+       y="5.2796979"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="2.5443182"
+         y="5.2796979">Афонин Иван Игоревич </tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="2.5443182"
+         y="10.571361"
+         id="tspan2">ИУ5-62Б</tspan></text>
+  </g>
+</svg>

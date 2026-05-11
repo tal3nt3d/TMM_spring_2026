@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест Inpaint артефактов</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #111; color: #fff; font-family: monospace; }
+        canvas { display: block; }
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: rgba(0,0,0,0.8);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid #444;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        button {
+            background: #222;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: monospace;
+            transition: background 0.2s;
+        }
+        button:hover { background: #333; }
+        button.active { background: #00ff88; color: #000; border-color: #00ff88; }
+        #label {
+            position: fixed;
+            top: 16px;
+            left: 20px;
+            color: #00ff88;
+            font-size: 15px;
+            font-family: monospace;
+            text-shadow: 0 0 8px #00ff88;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div id="label">Наведи камеру — режим INPAINT</div>
+
+<div id="controls">
+    <button class="active" onclick="setMode('scratches', this)">Царапины</button>
+    <button onclick="setMode('deadpixels', this)">Мёртвые пиксели</button>
+    <button onclick="setMode('lines', this)">Полосы</button>
+    <button onclick="setMode('combined', this)">Все вместе</button>
+</div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let currentMode = 'scratches';
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight - 80;
+    }
+    resize();
+    window.addEventListener('resize', () => { resize(); draw(); });
+
+    function setMode(mode, btn) {
+        currentMode = mode;
+        document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        draw();
+    }
+
+    // Рисуем базовую сцену — градиент с геометрией
+    function drawScene() {
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Фон — небо
+        const sky = ctx.createLinearGradient(0, 0, 0, h * 0.6);
+        sky.addColorStop(0, '#1a3a6b');
+        sky.addColorStop(1, '#4a7abf');
+        ctx.fillStyle = sky;
+        ctx.fillRect(0, 0, w, h * 0.6);
+
+        // Земля
+        const ground = ctx.createLinearGradient(0, h * 0.6, 0, h);
+        ground.addColorStop(0, '#4a7a3a');
+        ground.addColorStop(1, '#2a4a1a');
+        ctx.fillStyle = ground;
+        ctx.fillRect(0, h * 0.6, w, h * 0.4);
+
+        // Солнце
+        ctx.beginPath();
+        ctx.arc(w * 0.75, h * 0.2, 60, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffe066';
+        ctx.fill();
+
+        // Дом
+        const hx = w * 0.15;
+        const hy = h * 0.35;
+        const hw = w * 0.2;
+        const hh = h * 0.25;
+        ctx.fillStyle = '#c8a07a';
+        ctx.fillRect(hx, hy, hw, hh);
+        // Крыша
+        ctx.beginPath();
+        ctx.moveTo(hx - 10, hy);
+        ctx.lineTo(hx + hw / 2, hy - hh * 0.5);
+        ctx.lineTo(hx + hw + 10, hy);
+        ctx.fillStyle = '#8b4513';
+        ctx.fill();
+        // Окно
+        ctx.fillStyle = '#aad4f5';
+        ctx.fillRect(hx + hw * 0.2, hy + hh * 0.2, hw * 0.25, hh * 0.3);
+        ctx.fillRect(hx + hw * 0.55, hy + hh * 0.2, hw * 0.25, hh * 0.3);
+        // Дверь
+        ctx.fillStyle = '#5c3a1e';
+        ctx.fillRect(hx + hw * 0.38, hy + hh * 0.55, hw * 0.24, hh * 0.45);
+
+        // Дерево
+        const tx = w * 0.55;
+        const ty = h * 0.6;
+        ctx.fillStyle = '#5c3a1e';
+        ctx.fillRect(tx - 8, ty - h * 0.2, 16, h * 0.2);
+        ctx.beginPath();
+        ctx.arc(tx, ty - h * 0.2, 55, 0, Math.PI * 2);
+        ctx.fillStyle = '#2d6e2d';
+        ctx.fill();
+
+        // Дорожка
+        ctx.fillStyle = '#a09070';
+        ctx.beginPath();
+        ctx.moveTo(hx + hw * 0.38, hy + hh);
+        ctx.lineTo(hx + hw * 0.62, hy + hh);
+        ctx.lineTo(hx + hw * 0.8, h);
+        ctx.lineTo(hx + hw * 0.2, h);
+        ctx.fill();
+    }
+
+    function drawScratches() {
+        drawScene();
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Длинные диагональные царапины
+        for (let i = 0; i < 12; i++) {
+            const x1 = Math.random() * w;
+            const y1 = Math.random() * h;
+            const len = 80 + Math.random() * 200;
+            const angle = (Math.random() - 0.5) * 0.8;
+            const x2 = x1 + Math.cos(angle) * len;
+            const y2 = y1 + Math.sin(angle) * len;
+
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.strokeStyle = Math.random() > 0.5
+                ? `rgba(255,255,255,${0.7 + Math.random() * 0.3})`
+                : `rgba(0,0,0,${0.7 + Math.random() * 0.3})`;
+            ctx.lineWidth = 1 + Math.random() * 2;
+            ctx.stroke();
+        }
+
+        // Короткие царапины группами
+        for (let i = 0; i < 30; i++) {
+            const x1 = Math.random() * w;
+            const y1 = Math.random() * h;
+            const len = 10 + Math.random() * 40;
+            const angle = -Math.PI / 4 + (Math.random() - 0.5) * 0.3;
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x1 + Math.cos(angle) * len, y1 + Math.sin(angle) * len);
+            ctx.strokeStyle = `rgba(255,255,255,0.6)`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+
+        document.getElementById('label').textContent = 'ЦАРАПИНЫ — наведи камеру, используй INPAINT';
+    }
+
+    function drawDeadPixels() {
+        drawScene();
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Группы мёртвых пикселей (кластеры)
+        for (let g = 0; g < 25; g++) {
+            const cx = Math.random() * w;
+            const cy = Math.random() * h;
+            const count = 5 + Math.floor(Math.random() * 30);
+            const color = Math.random() > 0.4 ? '#ffffff' :
+                          Math.random() > 0.5 ? '#000000' : '#ff0000';
+
+            for (let i = 0; i < count; i++) {
+                const px = cx + (Math.random() - 0.5) * 20;
+                const py = cy + (Math.random() - 0.5) * 20;
+                const size = 2 + Math.random() * 4;
+                ctx.fillStyle = color;
+                ctx.fillRect(px, py, size, size);
+            }
+        }
+
+        // Одиночные застрявшие пиксели
+        for (let i = 0; i < 80; i++) {
+            ctx.fillStyle = Math.random() > 0.5 ? '#ff0000' : '#ffffff';
+            ctx.fillRect(
+                Math.random() * w,
+                Math.random() * h,
+                2, 2
+            );
+        }
+
+        document.getElementById('label').textContent = 'МЁРТВЫЕ ПИКСЕЛИ — наведи камеру, используй INPAINT';
+    }
+
+    function drawLines() {
+        drawScene();
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Горизонтальные полосы выпавших строк
+        for (let i = 0; i < 8; i++) {
+            const y = Math.random() * h;
+            const height = 2 + Math.floor(Math.random() * 5);
+            ctx.fillStyle = Math.random() > 0.5
+                ? `rgba(255,255,255,0.9)`
+                : `rgba(0,0,0,0.9)`;
+            ctx.fillRect(0, y, w, height);
+        }
+
+        // Вертикальные полосы
+        for (let i = 0; i < 5; i++) {
+            const x = Math.random() * w;
+            const width = 1 + Math.floor(Math.random() * 3);
+            ctx.fillStyle = Math.random() > 0.5
+                ? `rgba(255,255,255,0.8)`
+                : `rgba(0,0,0,0.8)`;
+            ctx.fillRect(x, 0, width, h);
+        }
+
+        // Частичные полосы (не на весь экран)
+        for (let i = 0; i < 10; i++) {
+            const y = Math.random() * h;
+            const x = Math.random() * w * 0.5;
+            const len = 100 + Math.random() * w * 0.4;
+            ctx.fillStyle = `rgba(255,255,255,${0.5 + Math.random() * 0.5})`;
+            ctx.fillRect(x, y, len, 1 + Math.floor(Math.random() * 3));
+        }
+
+        document.getElementById('label').textContent = 'ПОЛОСЫ — наведи камеру, используй INPAINT';
+    }
+
+    function drawCombined() {
+        drawScene();
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Царапины
+        for (let i = 0; i < 6; i++) {
+            const x1 = Math.random() * w;
+            const y1 = Math.random() * h;
+            const len = 60 + Math.random() * 150;
+            const angle = (Math.random() - 0.5) * 1.0;
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x1 + Math.cos(angle) * len, y1 + Math.sin(angle) * len);
+            ctx.strokeStyle = `rgba(255,255,255,0.85)`;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+        }
+
+        // Мёртвые пиксели
+        for (let g = 0; g < 15; g++) {
+            const cx = Math.random() * w;
+            const cy = Math.random() * h;
+            for (let i = 0; i < 10; i++) {
+                ctx.fillStyle = Math.random() > 0.5 ? '#fff' : '#000';
+                ctx.fillRect(cx + (Math.random()-0.5)*15, cy + (Math.random()-0.5)*15, 3, 3);
+            }
+        }
+
+        // Полосы
+        for (let i = 0; i < 4; i++) {
+            const y = Math.random() * h;
+            ctx.fillStyle = `rgba(255,255,255,0.8)`;
+            ctx.fillRect(0, y, w, 2);
+        }
+
+        document.getElementById('label').textContent = 'ВСЕ АРТЕФАКТЫ — наведи камеру, используй INPAINT';
+    }
+
+    function draw() {
+        if (currentMode === 'scratches') drawScratches();
+        else if (currentMode === 'deadpixels') drawDeadPixels();
+        else if (currentMode === 'lines') drawLines();
+        else if (currentMode === 'combined') drawCombined();
+    }
+
+    draw();
+
+    // Перерисовываем каждые 2 секунды для новых случайных артефактов
+    setInterval(draw, 2000);
+</script>
+</body>
+</html>

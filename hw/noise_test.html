@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовый шум — соль и перец</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #111; color: #fff; font-family: monospace; }
+        canvas { display: block; }
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: rgba(0,0,0,0.7);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        label { font-size: 14px; color: #aaa; }
+        input[type=range] { width: 160px; accent-color: #00ff88; }
+        span { color: #00ff88; font-size: 14px; min-width: 36px; }
+        button {
+            background: #00ff88;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        button:hover { background: #00cc66; }
+        #mode-btn {
+            background: #4488ff;
+            color: #fff;
+        }
+        #mode-btn:hover { background: #2266dd; }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<div id="controls">
+    <label>Интенсивность:</label>
+    <input type="range" id="density" min="1" max="50" value="10">
+    <span id="densityVal">10%</span>
+
+    <button id="mode-btn" onclick="toggleMode()">Режим: шум</button>
+    <button onclick="toggleAnimation()">⏸ Пауза</button>
+</div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const densitySlider = document.getElementById('density');
+    const densityVal = document.getElementById('densityVal');
+
+    let mode = 'noise'; // noise | blocks | stripes
+    let animating = true;
+    let animFrame;
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    densitySlider.addEventListener('input', () => {
+        densityVal.textContent = densitySlider.value + '%';
+    });
+
+    function drawNoise() {
+        const w = canvas.width;
+        const h = canvas.height;
+        const density = densitySlider.value / 100;
+
+        // Серый фон с градиентом (имитация реальной сцены)
+        const grad = ctx.createLinearGradient(0, 0, w, h);
+        grad.addColorStop(0, '#888');
+        grad.addColorStop(0.5, '#aaa');
+        grad.addColorStop(1, '#666');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        // Рисуем несколько прямоугольников для имитации сцены
+        ctx.fillStyle = '#555';
+        ctx.fillRect(w * 0.1, h * 0.2, w * 0.3, h * 0.6);
+        ctx.fillStyle = '#999';
+        ctx.fillRect(w * 0.6, h * 0.3, w * 0.25, h * 0.4);
+
+        // Добавляем шум соль и перец
+        const imageData = ctx.getImageData(0, 0, w, h);
+        const data = imageData.data;
+        const totalPixels = w * h;
+        const noiseCount = Math.floor(totalPixels * density);
+
+        for (let i = 0; i < noiseCount; i++) {
+            const idx = Math.floor(Math.random() * totalPixels) * 4;
+            const isSalt = Math.random() > 0.5;
+            const val = isSalt ? 255 : 0;
+            data[idx] = val;
+            data[idx + 1] = val;
+            data[idx + 2] = val;
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+
+        // Подпись
+        ctx.fillStyle = 'rgba(0,255,136,0.8)';
+        ctx.font = 'bold 16px monospace';
+        ctx.fillText('ТЕСТОВЫЙ ШУМ: СОЛЬ И ПЕРЕЦ', 20, 30);
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.font = '13px monospace';
+        ctx.fillText('Наведи камеру телефона и включи обработку', 20, 52);
+    }
+
+    function drawBlocks() {
+        const w = canvas.width;
+        const h = canvas.height;
+        const blockSize = 16;
+
+        // Рисуем изображение блоками (имитация JPEG артефактов)
+        for (let y = 0; y < h; y += blockSize) {
+            for (let x = 0; x < w; x += blockSize) {
+                const base = Math.floor(Math.random() * 80 + 80);
+                ctx.fillStyle = `rgb(${base},${base},${base})`;
+                ctx.fillRect(x, y, blockSize, blockSize);
+
+                // Резкие границы между блоками
+                if (Math.random() > 0.7) {
+                    const edge = Math.random() > 0.5 ? 255 : 0;
+                    ctx.fillStyle = `rgb(${edge},${edge},${edge})`;
+                    ctx.fillRect(x, y, blockSize, 1);
+                    ctx.fillRect(x, y, 1, blockSize);
+                }
+            }
+        }
+
+        ctx.fillStyle = 'rgba(0,255,136,0.8)';
+        ctx.font = 'bold 16px monospace';
+        ctx.fillText('ТЕСТОВЫЙ ШУМ: БЛОЧНЫЕ АРТЕФАКТЫ (JPEG)', 20, 30);
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.font = '13px monospace';
+        ctx.fillText('Наведи камеру телефона и включи обработку', 20, 52);
+    }
+
+    function drawStripes() {
+        const w = canvas.width;
+        const h = canvas.height;
+
+        ctx.fillStyle = '#888';
+        ctx.fillRect(0, 0, w, h);
+
+        // Горизонтальные полосы (banding артефакты)
+        const density = densitySlider.value / 100;
+        for (let y = 0; y < h; y++) {
+            if (Math.random() < density * 0.3) {
+                const bright = Math.random() > 0.5 ? 255 : 0;
+                ctx.fillStyle = `rgba(${bright},${bright},${bright},0.8)`;
+                ctx.fillRect(0, y, w, 1);
+            }
+        }
+
+        ctx.fillStyle = 'rgba(0,255,136,0.8)';
+        ctx.font = 'bold 16px monospace';
+        ctx.fillText('ТЕСТОВЫЙ ШУМ: ПОЛОСЫ (BANDING)', 20, 30);
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.font = '13px monospace';
+        ctx.fillText('Наведи камеру телефона и включи обработку', 20, 52);
+    }
+
+    function draw() {
+        if (mode === 'noise') drawNoise();
+        else if (mode === 'blocks') drawBlocks();
+        else if (mode === 'stripes') drawStripes();
+
+        if (animating) {
+            animFrame = setTimeout(() => requestAnimationFrame(draw), 100);
+        }
+    }
+
+    function toggleMode() {
+        const btn = document.getElementById('mode-btn');
+        if (mode === 'noise') {
+            mode = 'blocks';
+            btn.textContent = 'Режим: блоки';
+        } else if (mode === 'blocks') {
+            mode = 'stripes';
+            btn.textContent = 'Режим: полосы';
+        } else {
+            mode = 'noise';
+            btn.textContent = 'Режим: шум';
+        }
+        if (!animating) draw();
+    }
+
+    function toggleAnimation() {
+        const btn = event.target;
+        animating = !animating;
+        btn.textContent = animating ? '⏸ Пауза' : '▶ Играть';
+        if (animating) draw();
+    }
+
+    draw();
+</script>
+</body>
+</html>
